@@ -5,20 +5,26 @@
  * Compare it with the results from 3-promise-all.js
  */
 
-function wait1(t) {
-
+function wait1() {
+    return new Promise(resolve => setTimeout(resolve , 1000))
 }
 
-function wait2(t) {
-
+function wait2() {
+    return new Promise(resolve => setTimeout(resolve , 2000))
 }
 
-function wait3(t) {
-
+function wait3() {
+    return new Promise(resolve => setTimeout(resolve , 3000))
 }
 
-function calculateTime(t1, t2, t3) {
+async function calculateTime() {
+    const startTime =  new Date().getTime();
+    await wait1()
+    await wait2()
+    await wait3()
+    const endTime = new Date().getTime();
+    const elapsedTime = (endTime - startTime) / 1000; 
+    console.log(elapsedTime);
 
 }
-
-module.exports = calculateTime;
+calculateTime()
